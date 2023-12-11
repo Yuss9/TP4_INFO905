@@ -33,3 +33,4 @@ En résumé, l'utilisation de `Sequential` et `Dense` dans la construction du mo
 
 ----
 
+## c'est quoi les epochs 
