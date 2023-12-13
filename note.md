@@ -162,3 +162,61 @@ Ce travail pratique a permis de mettre en pratique les concepts de réseaux de n
     - **`model_cnn.fit(x_train, y_train, batch_size=16, epochs=13, validation_data=(x_test, y_test), callbacks=callbacks_list)`** : Entraîne le modèle sur les données d'entraînement avec un batch size de 16, pendant 13 epochs, en utilisant les données de validation pour évaluer les performances. Les callbacks sont utilisés pour enregistrer le meilleur modèle en fonction de la précision sur les données de validation.
 
 
+
+**One-Hot Encoding :**
+
+Le One-Hot Encoding est une technique utilisée en apprentissage machine pour représenter catégoriquement des variables. Elle est particulièrement utilisée pour encoder les étiquettes dans les tâches de classification. 
+
+**Exemple simple :**
+
+Supposons que nous ayons un ensemble de données contenant des fruits avec des étiquettes comme suit : pomme, banane, orange. Ces étiquettes sont des catégories, et nous voulons les encoder pour les utiliser dans un modèle d'apprentissage machine.
+
+- **Sans One-Hot Encoding :**
+  - Pomme → 1
+  - Banane → 2
+  - Orange → 3
+
+  Ici, les nombres représentent les catégories, mais ils ne portent pas de signification intrinsèque entre eux. Un modèle pourrait interpréter que l'orange (3) est plus similaire à la banane (2) qu'à la pomme (1), ce qui peut être problématique.
+
+- **Avec One-Hot Encoding :**
+  - Pomme → [1, 0, 0]
+  - Banane → [0, 1, 0]
+  - Orange → [0, 0, 1]
+
+  Avec One-Hot Encoding, chaque catégorie est représentée par un vecteur binaire où une seule position correspond à la catégorie réelle. Cela élimine l'ambiguïté que pourrait introduire une représentation numérique directe.
+
+**Définition simple :**
+
+Le One-Hot Encoding consiste à convertir une variable catégorielle en un vecteur binaire qui indique la présence ou l'absence de chaque catégorie. Chaque catégorie est représentée par une position unique dans le vecteur. Cela facilite l'utilisation de variables catégorielles dans les modèles d'apprentissage machine, car cela évite d'imposer des relations numériques artificielles entre les catégories.
+
+----
+
+Chacune des fonctions et méthodes mentionnées appartient à l'API Keras, une interface haut niveau pour la construction et l'entraînement de modèles d'apprentissage profond. Voici à quoi chaque fonction sert :
+
+1. **`Flatten` :**
+   - **Fonction :** La fonction `Flatten` est utilisée pour aplatir les données d'entrée. Elle est souvent utilisée comme première couche d'un modèle séquentiel pour convertir des données 2D (comme des images) en un vecteur 1D, ce qui est nécessaire avant d'ajouter des couches denses.
+   - **Exemple :** `model.add(layers.Flatten(input_shape=(32, 32, 3)))`
+
+2. **`Dense` :**
+   - **Fonction :** La fonction `Dense` est utilisée pour ajouter des couches de neurones densément connectés. C'est la couche classique que l'on trouve dans de nombreux réseaux de neurones. Chaque neurone dans une couche dense est connecté à tous les neurones de la couche précédente.
+   - **Exemple :** `model.add(layers.Dense(512, activation='relu'))`
+
+3. **`compile` :**
+   - **Fonction :** La méthode `compile` est utilisée pour configurer le modèle pour l'entraînement. Elle prend en paramètre l'optimiseur, la fonction de perte, et les métriques à surveiller pendant l'entraînement.
+   - **Exemple :** `model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])`
+
+4. **`fit` :**
+   - **Fonction :** La méthode `fit` est utilisée pour entraîner le modèle sur des données d'entraînement. Elle spécifie le nombre d'epochs, la taille du batch, et peut également inclure des données de validation.
+   - **Exemple :** `model.fit(x_train, y_train, epochs=20, batch_size=32, validation_data=(x_test, y_test))`
+
+5. **`summary` :**
+   - **Fonction :** La méthode `summary` est utilisée pour afficher un résumé du modèle, montrant la structure des couches, le nombre de paramètres, et d'autres informations utiles.
+   - **Exemple :** `model.summary()`
+
+6. **`save` :**
+   - **Fonction :** La méthode `save` est utilisée pour sauvegarder l'ensemble du modèle, y compris son architecture, ses poids, et ses configurations, dans un fichier.
+   - **Exemple :** `model.save('model.keras')`
+
+Ces fonctions et méthodes facilitent la création, la configuration, l'entraînement, et la sauvegarde des modèles d'apprentissage profond en utilisant l'API Keras.
+
+-----
